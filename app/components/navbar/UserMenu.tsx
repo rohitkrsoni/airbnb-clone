@@ -6,10 +6,12 @@ import Avatar from "../Avatar";
 import MenuItem from "./MenuItem";
 
 import { useCallback, useState } from "react";
+import useRegisterModel from "@/app/hooks/useRegisterModel";
 
 const UserMenu = () => {
   // States
   const [isOpen, setIsOpen] = useState(false);
+  const registerModel = useRegisterModel();
 
   const toggleOpen = useCallback(() => {
     setIsOpen((value) => !value);
@@ -77,7 +79,7 @@ const UserMenu = () => {
           <div className="flex flex-col cursor-pointer">
             <>
               <MenuItem onClick={() => {}} label="Login" />
-              <MenuItem onClick={() => {}} label="Sign up" />
+              <MenuItem onClick={registerModel.onOpen} label="Sign up" />
             </>
           </div>
         </div>
