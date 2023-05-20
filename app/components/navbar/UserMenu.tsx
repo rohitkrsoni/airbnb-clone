@@ -7,11 +7,13 @@ import MenuItem from "./MenuItem";
 
 import { useCallback, useState } from "react";
 import useRegisterModel from "@/app/hooks/useRegisterModel";
+import useLoginModal from "@/app/hooks/useLoginModal";
 
 const UserMenu = () => {
   // States
   const [isOpen, setIsOpen] = useState(false);
   const registerModel = useRegisterModel();
+  const loginModel = useLoginModal();
 
   const toggleOpen = useCallback(() => {
     setIsOpen((value) => !value);
@@ -78,7 +80,7 @@ const UserMenu = () => {
         >
           <div className="flex flex-col cursor-pointer">
             <>
-              <MenuItem onClick={() => {}} label="Login" />
+              <MenuItem onClick={loginModel.onOpen} label="Login" />
               <MenuItem onClick={registerModel.onOpen} label="Sign up" />
             </>
           </div>
