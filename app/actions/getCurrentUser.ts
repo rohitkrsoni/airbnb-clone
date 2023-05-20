@@ -24,7 +24,14 @@ export default async function getCurrentUser() {
       return null;
     }
 
-    return currentUser;
+    return {
+      ...currentUser,
+      createdAt: currentUser.createdAt.toISOString(),
+      updatedAt: currentUser.updatedAt.toISOString(),
+      emailVerified: currentUser.emailVerified?.toISOString() || null,
+
+      // DateTime and boolean are dangerous type so we should not pass it from server side to client side, better we convert it to safe type.
+    };
   } catch (error: any) {
     return null;
   }
